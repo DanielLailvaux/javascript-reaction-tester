@@ -1,0 +1,29 @@
+body {
+	font-family: sans-serif;
+	background-color: aliceblue;
+	color: burlywood;
+}
+
+#theDiv {
+	position: relative;
+	height: 100px;
+	width: 100px;
+	background-color: cornflowerblue;
+	top: 15px;
+	left: 400px;
+}
+
+#start {
+	float: right;
+	width: 100px;
+	height: 50px;
+	margin-top: -120px;
+	margin-right: 50px;
+	background-color: cornflowerblue;
+	color: aliceblue;
+}
+
+.info {
+	float: right;
+	margin-right: 340px;
+}
