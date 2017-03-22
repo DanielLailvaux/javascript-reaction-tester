@@ -1,15 +1,15 @@
 // Global variables
 var startTimer = 0,
-		delay = 0,
-		score = 0,
-		highScore = 0;
+    delay = 0,
+    score = 0,
+    highScore = 0;
 
 // Returns a random size
 var randomSize = function() {
 
 	// Size between 100 and 300px
 	var min = 100,
-			max = 300;
+	    max = 300;
 	
 	return Math.floor(Math.random() * max) + min;
 };
@@ -31,7 +31,10 @@ var randomShape = function() {
 // Randomly picks color
 var randomColor = function() {
  
-	var hex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'], hexPick = 0, colorNumLen = 6, color = '';
+	var hex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'], 
+	    hexPick = 0, 
+	    colorNumLen = 6, 
+	    color = '';
 	
 	for (var i = 0; i < colorNumLen; i++) {
 		
@@ -44,7 +47,7 @@ var randomColor = function() {
 // Randomly positions element with id
 var randomPosition = function(id) {
 	var left = Math.floor(Math.random() * 1030),
-			top = Math.floor(Math.random() * 210);
+	    top = Math.floor(Math.random() * 210);
 	
 	document.getElementById(id).style.left = left + "px";
 	document.getElementById(id).style.top = top + "px";
@@ -61,15 +64,15 @@ document.getElementById("start").onclick = function() {
 		// Get random size
 		var size = randomSize();
 	
-		// Random size
+		// Apply random size
 		document.getElementById("theDiv").style.height = size + "px";
 		document.getElementById("theDiv").style.width = size + "px";
 	
-	// Random color
+		// Circle or Square
 		document.getElementById("theDiv").style.borderRadius = randomShape();
 	
-		// 1 of 10 colors
-		document.getElementById("theDiv").style.backgroundColor = 	randomColor();
+		// Randomly slects color
+		document.getElementById("theDiv").style.backgroundColor = randomColor();
 	
 		// Random postion
 		randomPosition("theDiv");
@@ -86,28 +89,24 @@ document.getElementById("start").onclick = function() {
 		startTimer = Date.now();
 	}, 1000);
 };
-
-    // If its not first try
 		
-
+// Gameplay, keeping up highscores, scores and reaction time
 document.getElementById("theDiv").onclick = function() {
 	
 	// To calculate reaction time
 		var endTimer = Date.now();
 	
 	if (startTimer !== 0) {
-			// get rid of time delay
-			//endTimer -= 1000;
 		
-			// Calculate reaction and cahnge to seconds
-			var time = ((endTimer - startTimer) / 1000)
+		// Calculate reaction and change to seconds
+		var time = ((endTimer - startTimer) / 1000)
 		
-			// Update time
-			document.getElementById("time").innerHTML = "Your time: " + time + "s";
-		}
+		// Update time
+		document.getElementById("time").innerHTML = "Your time: " + time + "s";
+	}
 	
 	// Check if cirlce or square
-	if (document.getElementById("theDiv").style.borderRadius === 		"50%") {
+	if (document.getElementById("theDiv").style.borderRadius === "50%") {
 		if (score > highScore) {
 			highScore = score;
 			document.getElementById("high-score").innerHTML = "High Score: " + highScore;
